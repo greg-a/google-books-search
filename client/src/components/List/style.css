@@ -49,3 +49,7 @@ img {
   width: 150px;
   height: 150px;
 }
+
+.delete-btn {
+  padding-right: 55px;
+}

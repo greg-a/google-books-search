@@ -16,21 +16,27 @@ class Search extends Component {
         event.preventDefault();
 
         API.googleBooks(this.state.search)
-            .then(res => {
+            .then(res =>
                 this.setState({
                     books: res.data.items
-                });
-                console.log(this.state.books);
-            })
+                })
+            )
             .catch(err => console.log(err))
     };
 
     saveThisBook = event => {
         event.preventDefault();
         const bookId = event.target.dataset.id;
-        const savedBook = this.state.books.filter(book => book.id === bookId)
+        const savedBook = this.state.books.filter(book => book.id === bookId);
 
-        API.saveBook(savedBook)
+        API.saveBook({
+            title: savedBook[0].volumeInfo.title,
+            author: savedBook[0].volumeInfo.authors[0],
+            description: savedBook[0].volumeInfo.description,
+            image: savedBook[0].volumeInfo.imageLinks.smallThumbnail,
+            link: savedBook[0].volumeInfo.infoLink,
+            date: new Date(Date.now())
+          })
             .then(res => {
                 console.log("saved")
             })
@@ -54,7 +60,7 @@ class Search extends Component {
                 {this.state.books.length ? (
                     <List>
                         {this.state.books.map(book => (
-                            <ListItem image={book.volumeInfo.imageLinks.smallThumbnail} link={book.volumeInfo.previewLink} title={book.volumeInfo.title} description={book.volumeInfo.description} author={book.volumeInfo.authors[0]} buttonName="Save" dataId={book.id} clickEvent={this.saveThisBook}/>
+                            <ListItem image={book.volumeInfo.imageLinks.smallThumbnail} link={book.volumeInfo.infoLink} title={book.volumeInfo.title} description={book.volumeInfo.description} author={book.volumeInfo.authors[0]} buttonName="Save" dataId={book.id} clickEvent={this.saveThisBook} class="save-btn btn card-btn"/>
                         ))}
                     </List>
                 ) : (
