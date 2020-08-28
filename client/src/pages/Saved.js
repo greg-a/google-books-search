@@ -3,7 +3,7 @@ import Wrapper from "../components/Wrapper";
 import API from "../utils/API";
 import { List, ListItem } from "../components/List";
 import Jumbotron from "../components/Jumbotron";
-import SearchForm from "../components/SearchForm";
+import Nav from "../components/Nav";
 
 
 class Saved extends Component {
@@ -19,26 +19,27 @@ class Saved extends Component {
     loadBooks = () => {
 
         API.getBooks()
-            .then(res => 
+            .then(res =>
                 this.setState({
                     books: res.data
                 })
             )
             .catch(err => console.log(err))
-    };  
-    
+    };
+
     deleteBook = id => {
         API.deleteBook(id)
-          .then(res => this.loadBooks())
-          .catch(err => console.log(err));
-      };
+            .then(res => this.loadBooks())
+            .catch(err => console.log(err));
+    };
 
     render() {
         return (
             <Wrapper>
-            <Jumbotron>
-                <h3>Search For A Book</h3>
-            </Jumbotron>
+                <Nav />
+                <Jumbotron>
+                    <h3>Search For A Book</h3>
+                </Jumbotron>
                 {this.state.books.length ? (
                     <List>
                         {this.state.books.map(book => (
@@ -46,8 +47,8 @@ class Saved extends Component {
                         ))}
                     </List>
                 ) : (
-                    <h3>No Results!</h3>
-                )}
+                        <h3>No Results!</h3>
+                    )}
             </Wrapper>
         )
     }

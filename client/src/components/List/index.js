@@ -5,7 +5,7 @@ import "./style.css";
 
 export function List({ children }) {
   return (
-    <div className="container">
+    <div className="container col-10">
       <ul className="list-group">{children}</ul>
     </div>
   );
@@ -18,7 +18,7 @@ export function ListItem(props) {
         <a href={props.link} target="_blank">
           <span className="view-btn btn card-btn">View</span>
         </a>
-  <span className={props.class} onClick={props.clickEvent} data-id={props.dataId}>{props.buttonName}</span>
+        <span className={props.class} onClick={props.clickEvent} data-id={props.dataId}>{props.buttonName}</span>
       </div>
       <h5 className="card-title">{props.title}</h5>
       <p className="card-text">{props.author}</p>
