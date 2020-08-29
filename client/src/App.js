@@ -10,6 +10,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/saved" component={Saved} />
+          <Route path="*" component={Search} />
         </Switch>
       </div>
     </Router>
