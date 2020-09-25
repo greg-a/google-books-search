@@ -23,7 +23,7 @@ export function ListItem(props) {
       <h5 className="card-title">{props.title}</h5>
       <p className="card-text">{props.author}</p>
       <div className="card-body row">
-        <img src={props.image} alt={props.title} className="col-md-2"></img>
+        <img src={props.image} alt={props.title} className="col-md-1"></img>
         <p className="card-text col-sm-10">{props.description}</p>
       </div>
 

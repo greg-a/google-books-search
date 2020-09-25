@@ -1,0 +1,11 @@
+.jumbotron {
+    background-image: url("../../img/books.jpg");
+    color: white;
+    border-radius: 0;
+}
+
+.jumbotron-container {
+    width: 600px;
+    border-radius: 60px;
+    opacity: 0.9;
+}
