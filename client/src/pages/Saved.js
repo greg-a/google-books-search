@@ -38,7 +38,7 @@ class Saved extends Component {
             <Wrapper>
                 <Nav />
                 <Jumbotron>
-                    <h3>Search For A Book</h3>
+                    <h3>Saved Books</h3>
                 </Jumbotron>
                 {this.state.books.length ? (
                     <List>
